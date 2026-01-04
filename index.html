@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - CS Student Portfolio</title>
+    <title>Colonia - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 <body>
@@ -20,55 +22,76 @@
 
     <section id="introduction" class="hero">
         <h1>Welcome! I'm <strong>Donnah Therisse L. Colonia</strong></h1>
-        <p>Computer Science Student | Aspiring Software Developer</p>
+        <p>Computer Science Student | Aspiring UI/UX Designer & Frontend Developer</p>
         <a href="#contact" class="cta-btn">Get In Touch</a>
     </section>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a Computer Science student currently seeking an OJT/Internship opportunity to apply my technical skills and grow as a developer. I'm passionate about creating efficient solutions and learning new technologies.</p>
-        <p style="margin-top: 1rem;">Throughout my studies, I've worked on various projects that have strengthened my problem-solving abilities and teamwork skills. I'm eager to contribute to real-world projects and gain hands-on industry experience.</p>
+        <h2><i class="fas fa-user"></i> About Me</h2>
+        <div class="about-wrapper">
+        <div class="about-image">
+        <img src="images/profile.png" alt="Profile photo">
+        </div>
+        <div class="about-content">
+        <p>I'm a Computer Science student from <strong>Taguig City University</strong> seeking an OJT/Internship, with a strong interest in UI design and front-end development. I enjoy creating clean, user-friendly interfaces that balance visual design with functionality.</p>
+        <p style="margin-top: 1rem;">Through my projects, I've worked on designing and building responsive web interfaces, improving user experience, and turning ideas into visually appealing layouts. I'm eager to grow as a designer-developer and contribute to real-world projects.</p>
+        <div class="resume-actions">
+        <a href="resume/colonia_cv_resume.pdf"
+            target="_blank"
+            class="btn-resume primary">
+            View Resume
+        </a>
+        <a href="resume/colonia_cv_resume.pdf"
+            download
+            class="btn-resume secondary">
+            Download Resume
+        </a>
+        </div>
+        </div>
+        </div>
     </section>
 
     <section id="skills">
-        <h2>Technical Skills</h2>
+        <h2><i class="fas fa-code"></i> Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <h3>Programming Languages</h3>
+                <h3>Programming Languages (Basic) </h3>
                 <ul class="skill-list">
-                    <li>Python</li>
                     <li>Java</li>
-                    <li>JavaScript</li>
-                    <li>C/C++</li>
+                    <li>GDScript</li>
+                    <li>PHP</li>
+                    <li>Python</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <h3>Web Development</h3>
                 <ul class="skill-list">
-                    <li>HTML/CSS</li>
-                    <li>React.js</li>
-                    <li>Node.js</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
                     <li>Responsive Design</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <h3>Tools & Technologies</h3>
                 <ul class="skill-list">
-                    <li>Git/GitHub</li>
-                    <li>MySQL/PostgreSQL</li>
-                    <li>VS Code</li>
+                    <li>GitHub</li>
+                    <li>Visual Studio Code</li>
                     <li>Figma</li>
+                    <li>Canva</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2>Projects</h2>
+        <h2><i class="fas fa-folder-open"></i> Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-img">
+                    <a href="https://github.com/Keyofcake/skill-map" target="_blank" class="project-link">
                     <img src="images/SkillMap.png" alt="SkillMap" class="project-img" style="object-fit: cover;">
+                    </a>
                 </div>
                 <div class="project-content">
                     <h3>SkillMap</h3>
@@ -130,7 +153,24 @@
     </section>
 
     <section id="contact">
-        <h2>Contact Me</h2>
+        <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+        <div class="contact-info">
+        <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <strong>GitHub</strong>
+            <a href="https://github.com/dtc0525" target="_blank">dtc0525</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <strong>Email</strong>
+            <a href="mailto:donnahtherisse@gmail.com">donnahtherisse@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <strong>LinkedIn</strong>
+            <a href="https://www.linkedin.com/in/donnah-colonia-ab8a64334/" target="_blank">Donnah Colonia</a>
+        </div>
+        </div>
         <form class="contact-form" id="contactForm">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -146,25 +186,11 @@
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
         </form>
-        <div class="contact-info">
-            <div class="contact-item">
-                <strong>GitHub</strong><br>
-                <a href="https://github.com/dtc0525" target="_blank">dtc0525</a>
-            </div>
-            <div class="contact-item">
-                <strong>Email</strong><br>
-                <a href="mailto:donnahtherisse@gmail.com">donnahtherisse@gmail.com</a>
-            </div>
 
-            <div class="contact-item">
-                <strong>LinkedIn</strong><br>
-                <a href="https://www.linkedin.com/in/donnah-colonia-ab8a64334/" target="_blank">Donnah Colonia</a>
-            </div>
-        </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Portfolio. All rights reserved.</p>
+        <p>&copy; 2025 E-Portfolio. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

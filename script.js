@@ -39,3 +39,19 @@
                 }
             });
         });
+
+function openModal() {
+    document.getElementById('resumeModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('resumeModal').classList.remove('active');
+}
+
+// Close modal when clicking outside the content
+window.onclick = function(event) {
+    const modal = document.getElementById('resumeModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
