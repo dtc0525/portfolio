@@ -174,17 +174,18 @@
         <form class="contact-form" id="contactForm">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="from_name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="reply_to" required>
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
                 <textarea id="message" name="message" required></textarea>
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
+            <div id="formStatus"></div>
         </form>
 
     </section>
@@ -194,6 +195,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 </body>
 </html>
