@@ -438,7 +438,7 @@
 /* Carousel Controls */
 .carousel-controls {
     position: absolute;
-    top: -150px; /* Position arrows vertically centered with cards */
+    top: -350px; /* Position arrows vertically centered with cards */
     left: 0;
     right: 0;
     display: flex;
@@ -574,3 +574,332 @@
             }
         }
 
+/* Add these mobile responsive styles to your existing CSS */
+
+/* Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 4rem 1.5rem 2rem;
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        flex: 0 0 200px;
+    }
+
+    .resume-actions {
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    /* Carousel adjustments for tablet */
+    .carousel-controls {
+        top: -280px;
+    }
+
+    .carousel-track .project-card {
+        flex: 0 0 calc(50% - 1rem); /* 2 cards per view */
+    }
+}
+
+/* Mobile Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    /* Navigation */
+    nav ul {
+        flex-wrap: wrap;
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        margin: 0.25rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    nav li:not(:last-child)::after {
+        margin: 0 0.5rem;
+        font-size: 0.6rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        background-size: cover;
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    /* Sections */
+    section {
+        padding: 3rem 1rem 2rem;
+        min-height: auto;
+    }
+
+    section::after {
+        width: 70%;
+        height: 3px;
+        margin-top: 10%;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h2 i {
+        margin-right: 0.5rem;
+    }
+
+    /* About Section */
+    .about-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-image {
+        flex: 0 0 180px;
+        margin: 0 auto;
+    }
+
+    .about-content {
+        max-width: 100%;
+    }
+
+    .about-content p {
+        font-size: 0.95rem;
+    }
+
+    .resume-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-resume {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 20px;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    .skill-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .project-content {
+        padding: 1.25rem;
+    }
+
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-content p {
+        font-size: 0.9rem;
+    }
+
+    .project-tags h4 {
+        font-size: 0.95rem;
+    }
+
+    .tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    /* Carousel Mobile Adjustments */
+    .carousel-container {
+        padding: 0 45px;
+    }
+
+    .carousel-track .project-card {
+        flex: 0 0 100%; /* 1 card per view on mobile */
+    }
+
+    .carousel-controls {
+        top: -220px; /* Adjust for mobile card height */
+    }
+
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .carousel-btn i {
+        font-size: 1.1rem;
+    }
+
+    .carousel-btn.prev-btn {
+        margin-left: -22px;
+    }
+
+    .carousel-btn.next-btn {
+        margin-right: -22px;
+    }
+
+    .carousel-dots {
+        margin-top: 1.5rem;
+        gap: 0.5rem;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Contact Section */
+    .contact-info {
+        flex-direction: column;
+        gap: 2.5rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .contact-item i {
+        font-size: 2.5rem;
+    }
+
+    .contact-item strong {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 20px;
+        margin: 1.5rem auto;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.65rem;
+        font-size: 0.95rem;
+    }
+
+    .submit-btn {
+        padding: 0.85rem;
+        font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile Styles (max-width: 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        margin: 0.25rem 0.5rem;
+    }
+
+    .about-image {
+        flex: 0 0 150px;
+    }
+
+    .carousel-controls {
+        top: -200px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-btn i {
+        font-size: 1rem;
+    }
+
+    .contact-info {
+        gap: 2rem;
+    }
+
+    .contact-item i {
+        font-size: 2rem;
+    }
+}
+
+/* Landscape Mobile Orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+
+    section {
+        min-height: auto;
+    }
+}
