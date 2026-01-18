@@ -120,6 +120,7 @@
             color: #e7e2d8;
             margin-bottom: 2rem;
             z-index: 2;
+            opacity: 0.75;
         }
 
         .hero h1{
@@ -137,10 +138,9 @@
         gap: 3rem;
         }
 
-        /* RIGHT SIDE STACK */
         .about-content {
         display: flex;
-        flex-direction: column;   /* 👈 THIS IS THE KEY */
+        flex-direction: column;   
         gap: 1rem;
         max-width: 1000px;
         }
@@ -150,15 +150,24 @@
         }
 
         .about-image {
-        flex: 0 0 280px;
+            flex: 0 0 280px;
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+            will-change: transform;
+        }
+
+        .about-image:hover {
+            transform: scale(1.12);
         }
 
         .about-image img {
-        width: 100%;
-        border-radius: 500px;
-        border: solid #8c492f 10px;
-        object-fit: cover;
+            width: 100%;
+            border-radius: 500px;
+            border: 10px solid #8c492f;
+            object-fit: cover;
+            display: block; 
         }
+
 
         .resume-actions {
         margin-top: 1rem;
@@ -203,11 +212,12 @@
             color: #e7e2d8;
             text-decoration: none;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: transform 0.3s;
         }
 
         .cta-btn:hover {
             background: #a68329;
+            transform: translateY(-5px);
         }
 
         .skills-grid {
@@ -260,11 +270,19 @@
             border: 1px solid #dee2e6;
             border-radius: 10px;
             overflow: hidden;
-            transition: box-shadow 0.3s;
+            transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+
         }
 
         .project-card:hover {
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: scale(1.1);
+        }
+
+        .projects-grid:hover .project-card:not(:hover) {
+            transform: scale(0.9);
+            filter:blur(3px);
         }
 
         .project-img {
@@ -350,11 +368,12 @@
             font-family: Georgia;
             font-size: 1.25rem;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: transform 0.3s;
         }
 
         .submit-btn:hover {
             background: #a68329;
+            transform: translateY(-5px);
         }
 
         .contact-item i {
@@ -396,6 +415,11 @@
             font-size: 3rem; 
             color: #212017;
             margin-bottom: 0.5rem;
+            transition: transform 0.5s;
+
+        }
+        .contact-item i:hover {
+            transform: translateY(-5px);
         }
 
         .contact-item strong {
