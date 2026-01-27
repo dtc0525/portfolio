@@ -164,17 +164,30 @@ class ProjectsCarousel {
     }
     
     updateCarousel() {
-        const track = document.querySelector('.carousel-track');
-        const cardWidth = 100 / this.cardsPerView;
-        const offset = -(this.currentIndex * cardWidth);
-        track.style.transform = `translateX(${offset}%)`;
-        
-        // Update dots
-        const totalDots = this.totalProjects - this.cardsPerView + 1;
-        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentIndex);
-        });
-    }
+    const track = document.querySelector('.carousel-track');
+    const cards = track.children;
+
+    if (!cards.length) return;
+
+    const card = cards[0];
+    const cardStyle = getComputedStyle(card);
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+
+    const cardWidth = card.offsetWidth + gap;
+    const maxIndex = this.totalProjects - this.cardsPerView;
+
+    // Clamp index
+    if (this.currentIndex < 0) this.currentIndex = 0;
+    if (this.currentIndex > maxIndex) this.currentIndex = maxIndex;
+
+    track.style.transform = `translateX(-${this.currentIndex * cardWidth}px)`;
+
+    // Update dots
+    document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === this.currentIndex);
+    });
+}
+
     
     next() {
         const maxIndex = this.totalProjects - this.cardsPerView;
