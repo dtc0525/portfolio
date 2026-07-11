@@ -74,56 +74,56 @@ window.addEventListener('scroll', function() {
 
 class ProjectsCarousel {
     constructor() {
-        this.currentIndex = 0;
-        this.projectCards = document.querySelectorAll('.project-card');
+        this.projectCards = Array.from(document.querySelectorAll('.project-card'));
         this.totalProjects = this.projectCards.length;
         this.cardsPerView = this.getCardsPerView();
+
+        this.realIndex = 0;        // which real card is currently "first", for the dots
+        this.isAnimating = false;
+        this.transitionDuration = 500; // ms, must match the transitions set below
+
         this.autoplayInterval = null;
         this.autoplayDelay = 5000; // 5 seconds
-        
+
         this.init();
         this.setupResponsive();
         this.startAutoplay();
     }
-    
+
     getCardsPerView() {
         const width = window.innerWidth;
         if (width < 768) return 1;
         if (width < 1024) return 2;
         return 3;
     }
-    
+
     init() {
         this.createCarouselStructure();
         this.createControls();
-        this.updateCarousel();
+        this.track = document.querySelector('.carousel-track');
+        this.track.style.transform = 'translateX(0)';
     }
-    
+
     createCarouselStructure() {
         const projectsGrid = document.querySelector('.projects-grid');
-        
-        // Wrap existing grid in carousel container
+
         const carouselTrack = document.createElement('div');
         carouselTrack.className = 'carousel-track';
-        
-        // Move all project cards into the track
+
         while (projectsGrid.firstChild) {
             carouselTrack.appendChild(projectsGrid.firstChild);
         }
-        
+
         projectsGrid.appendChild(carouselTrack);
         projectsGrid.classList.add('carousel-container');
     }
-    
+
     createControls() {
-        const projectsSection = document.querySelector('#projects');
         const projectsGrid = document.querySelector('.projects-grid');
-        
-        // Create a wrapper div for controls and dots
+
         const controlsWrapper = document.createElement('div');
         controlsWrapper.className = 'carousel-controls-wrapper';
-        
-        // Create navigation buttons with Font Awesome icons
+
         controlsWrapper.innerHTML = `
             <div class="carousel-controls">
                 <button class="carousel-btn prev-btn" aria-label="Previous">
@@ -135,14 +135,11 @@ class ProjectsCarousel {
             </div>
             <div class="carousel-dots"></div>
         `;
-        
-        // Insert controls wrapper right after the projects grid
+
         projectsGrid.parentNode.insertBefore(controlsWrapper, projectsGrid.nextSibling);
-        
-        // Create dots
+
         this.createDots();
-        
-        // Add event listeners
+
         document.querySelector('.prev-btn').addEventListener('click', () => {
             this.prev();
             this.resetAutoplay();
@@ -151,8 +148,7 @@ class ProjectsCarousel {
             this.next();
             this.resetAutoplay();
         });
-        
-        // Add keyboard navigation
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') {
                 this.prev();
@@ -164,18 +160,15 @@ class ProjectsCarousel {
             }
         });
 
-        // Pause autoplay on hover
         const carouselContainer = document.querySelector('.carousel-container');
         carouselContainer.addEventListener('mouseenter', () => this.stopAutoplay());
         carouselContainer.addEventListener('mouseleave', () => this.startAutoplay());
     }
-    
+
     createDots() {
         const dotsContainer = document.querySelector('.carousel-dots');
-        const totalDots = this.totalProjects - this.cardsPerView + 1;
-        
         dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalDots; i++) {
+        for (let i = 0; i < this.totalProjects; i++) {
             const dot = document.createElement('button');
             dot.className = 'carousel-dot';
             dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
@@ -185,65 +178,102 @@ class ProjectsCarousel {
             });
             dotsContainer.appendChild(dot);
         }
+        this.updateDots();
     }
-    
-    updateCarousel() {
-    const track = document.querySelector('.carousel-track');
-    const cards = track.children;
 
-    if (!cards.length) return;
+    updateDots() {
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.realIndex);
+        });
+    }
 
-    const card = cards[0];
-    const cardStyle = getComputedStyle(card);
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    getCardWidth() {
+        const card = this.track.children[0];
+        const gap = parseFloat(getComputedStyle(this.track).gap) || 0;
+        return card.offsetWidth + gap;
+    }
 
-    const cardWidth = card.offsetWidth + gap;
-    const maxIndex = this.totalProjects - this.cardsPerView;
-
-    // Clamp index
-    if (this.currentIndex < 0) this.currentIndex = 0;
-    if (this.currentIndex > maxIndex) this.currentIndex = maxIndex;
-
-    track.style.transform = `translateX(-${this.currentIndex * cardWidth}px)`;
-
-    // Update dots
-    document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-        dot.classList.toggle('active', index === this.currentIndex);
-    });
-}
-
-    
+    // Slide forward one card, then permanently move the card that scrolled
+    // out of view (now offscreen left) to the end of the track and reset
+    // the transform to 0. Because that reset happens with transitions off,
+    // and the moved card lands exactly where the animation left off, there
+    // is nothing to visibly "snap" — it's a genuine infinite loop.
     next() {
-        const maxIndex = this.totalProjects - this.cardsPerView;
-        
-        // Loop back to start when reaching the end
-        if (this.currentIndex >= maxIndex) {
-            this.currentIndex = 0;
-        } else {
-            this.currentIndex++;
-        }
-        this.updateCarousel();
+        if (this.isAnimating || this.totalProjects <= 1) return;
+        this.isAnimating = true;
+
+        const cardWidth = this.getCardWidth();
+        this.track.style.transition = `transform ${this.transitionDuration}ms ease`;
+        this.track.style.transform = `translateX(-${cardWidth}px)`;
+
+        this.realIndex = (this.realIndex + 1) % this.totalProjects;
+        this.updateDots();
+
+        setTimeout(() => {
+            const first = this.track.firstElementChild;
+            this.track.appendChild(first);
+
+            this.track.style.transition = 'none';
+            this.track.style.transform = 'translateX(0)';
+            // Force layout flush so this instant reset is committed now,
+            // before any future call re-enables the transition.
+            this.track.getBoundingClientRect();
+
+            this.isAnimating = false;
+        }, this.transitionDuration);
     }
-    
+
+    // Mirror image of next(): move the last card to the front first, offset
+    // the transform instantly so nothing visibly moves yet, then animate
+    // back to 0 — which slides that card into view from the left.
     prev() {
-        const maxIndex = this.totalProjects - this.cardsPerView;
-        
-        // Loop to end when at the start
-        if (this.currentIndex <= 0) {
-            this.currentIndex = maxIndex;
-        } else {
-            this.currentIndex--;
-        }
-        this.updateCarousel();
+        if (this.isAnimating || this.totalProjects <= 1) return;
+        this.isAnimating = true;
+
+        const cardWidth = this.getCardWidth();
+        const last = this.track.lastElementChild;
+        this.track.insertBefore(last, this.track.firstElementChild);
+
+        this.track.style.transition = 'none';
+        this.track.style.transform = `translateX(-${cardWidth}px)`;
+        this.track.getBoundingClientRect(); // flush before animating
+
+        requestAnimationFrame(() => {
+            this.track.style.transition = `transform ${this.transitionDuration}ms ease`;
+            this.track.style.transform = 'translateX(0)';
+        });
+
+        this.realIndex = (this.realIndex - 1 + this.totalProjects) % this.totalProjects;
+        this.updateDots();
+
+        setTimeout(() => {
+            this.isAnimating = false;
+        }, this.transitionDuration);
     }
-    
-    goToSlide(index) {
-        this.currentIndex = index;
-        this.updateCarousel();
+
+    // Jump directly to a given real slide by rotating the DOM order instantly
+    // (no slide animation, matching typical dot-click behavior).
+    goToSlide(targetIndex) {
+        if (this.isAnimating || targetIndex === this.realIndex) return;
+        this.isAnimating = true;
+
+        const diff = (targetIndex - this.realIndex + this.totalProjects) % this.totalProjects;
+        for (let i = 0; i < diff; i++) {
+            this.track.appendChild(this.track.firstElementChild);
+        }
+
+        this.track.style.transition = 'none';
+        this.track.style.transform = 'translateX(0)';
+        this.track.getBoundingClientRect();
+
+        this.realIndex = targetIndex;
+        this.updateDots();
+
+        this.isAnimating = false;
     }
 
     startAutoplay() {
-        this.stopAutoplay(); // Clear any existing interval
+        this.stopAutoplay();
         this.autoplayInterval = setInterval(() => {
             this.next();
         }, this.autoplayDelay);
@@ -260,27 +290,21 @@ class ProjectsCarousel {
         this.stopAutoplay();
         this.startAutoplay();
     }
-    
+
     setupResponsive() {
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                const newCardsPerView = this.getCardsPerView();
-                if (newCardsPerView !== this.cardsPerView) {
-                    this.cardsPerView = newCardsPerView;
-                    this.currentIndex = 0;
-                    this.createDots();
-                    this.updateCarousel();
-                }
+                this.cardsPerView = this.getCardsPerView();
+                // Card width is measured live on every move, so no
+                // structural rebuild is needed on resize anymore.
             }, 250);
         });
     }
 }
 
-// Initialize carousel when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Small delay to ensure everything is rendered
     setTimeout(() => {
         new ProjectsCarousel();
     }, 100);
