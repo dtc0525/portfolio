@@ -227,18 +227,41 @@
             margin-top: 2rem;
         }
 
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            inset: 0; /* Same as top:0; right:0; bottom:0; left:0; */
+            background: rgba(0, 0, 0, 0.85);
+        }
+
         .skill-card {
+            position: relative;
+            overflow: hidden;
             padding: 2rem;
-            background: radial-gradient(circle at top right,
-                            #5f4fac,
-                            transparent 40%),
-                        radial-gradient(circle at bottom left,
-                            #5f4fac,
-                            transparent 35%),
-                        #8476ca;;
+            background-image: url('images/2.svg'); 
+            background-position: center top;
+            background-position: 50% 30%;
+            background-size: 100%;
             border-top-left-radius: 45px;
             border-bottom-right-radius: 45px;            
             transition: transform 0.3s;
+        }
+
+        .skill-card.reverse{
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+            background-image: url('images/3.svg'); 
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 45px;
+            border-bottom-left-radius: 45px;      
+            transition: transform 0.3s;
+        }        
+
+        .skill-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .skill-card:hover {
@@ -247,17 +270,17 @@
 
         .skill-card h3 {
             margin-bottom: 1rem;
-            color: #4a037c;
+            color: #6a0dad;
         }
 
         .skill-list {
             list-style: none;
-            color: #1f1a3d;
+            color: #EAB8E4;
         }
 
         .skill-list li {
             padding: 0.5rem 0;
-            border-bottom: 1px solid #1f1a3d;
+            border-bottom: 1px solid #EAB8E4;
         }
 
         .skill-list li:last-child {
