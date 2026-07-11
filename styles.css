@@ -45,6 +45,7 @@
         section#introduction {
             padding: 0;
             max-width: 2000px;
+            min-height: 100vh;
         }
 
         section#introduction p{
@@ -52,20 +53,9 @@
         }
 
         section {
-            min-height: 100vh;
             padding: 5rem 2rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        section::after {
-        content: '';
-        display: block;
-        width: 50%;
-        height: 5px;
-        background: #5f4fac;
-        margin: 3rem auto 0;
-        margin-top: 16%;
         }
 
         #introduction::after,
@@ -156,7 +146,7 @@
             flex: 0 0 280px;
             display: inline-block;
             transition: transform 0.4s cubic-bezier(.22,1,.36,1);
-            will-change: transform;
+            transition: transform 0.3s ease;
         }
 
         .about-image:hover {
@@ -181,11 +171,12 @@
         .btn-resume {
         padding: 12px 24px;
         border-radius: 8px;
-        font-weight: 600;
+        font-weight: 300;
         text-decoration: none;
         transition: all 0.3s ease;
         display: inline-flex;
         align-items: center;
+        font-family:"Space Grotesk", sans-serif;
         }
 
         .btn-resume.primary {
@@ -196,6 +187,7 @@
         .btn-resume.primary:hover {
         background-color: #4a037c;
         transform: translateY(-2px);
+        font-weight: 700;
         }
 
         .btn-resume.secondary {
@@ -206,6 +198,7 @@
         .btn-resume.secondary:hover {
         background-color: #4a037c;
         transform: translateY(-2px);
+        font-weight: 700;
         }
 
         .cta-btn {
@@ -264,7 +257,7 @@
 
         .skill-list li {
             padding: 0.5rem 0;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid #1f1a3d;
         }
 
         .skill-list li:last-child {
@@ -321,6 +314,7 @@
 
         .project-content h3 {
             margin-bottom: 0.5rem;
+            color: #1f1a3d;
         }
 
         .project-tags {
@@ -332,61 +326,10 @@
 
         .tag {
             padding: 0.25rem 0.75rem;
-            background: #e7e2d8;
-            color: #ac8d41;
+            background: #A45DBB;
+            color: #4a037c;
             border-radius: 20px;
             font-size: 0.85rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto;
-            background-color: #b7aa97;
-            padding: 25px;
-            border-top-left-radius: 45px;
-            border-bottom-right-radius: 45px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            font-family: Georgia;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #ac8d41;
-            color: #f8f9fa;
-            border: none;
-            border-radius: 5px;
-            font-family: Georgia;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #a68329;
-            transform: translateY(-5px);
         }
 
         .contact-item i {
@@ -407,13 +350,15 @@
         }
 
         .contact-item a {
-            color: #8c492f;
+            color: #6a0dad;
             text-decoration: none;
+            transition: transform 0.3s ease;
         }
 
         .contact-item a:hover {
-            color: #a68329;
+            color: #4a037c;
             text-decoration: none;
+            transform: scale(1.25);
         }
 
         .contact-item {
@@ -421,12 +366,12 @@
             display: flex;
             flex-direction: column; 
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
         .contact-item i {
             font-size: 3rem; 
-            color: #212017;
+            color: #1f1a3d;
             margin-bottom: 0.5rem;
             transition: transform 0.5s;
 
@@ -443,8 +388,8 @@
         footer {
             text-align: center;
             padding: 1rem;
-            background: #b7aa97;
-            color: #212017;
+            background: #1f1a3d;
+            color: #EAB8E4;
         }
 
         /* ============================================
@@ -489,8 +434,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #ac8d41;
-    color: #e7e2d8;
+    background: #6a0dad;
+    color: #EAB8E4;
     border: none;
     cursor: pointer;
     display: flex;
@@ -506,7 +451,7 @@
 }
 
 .carousel-btn:hover {
-    background: #a68329;
+    background: #4a037c;
     transform: scale(1.15);
     box-shadow: 0 6px 16px rgba(140, 73, 47, 0.4);
 }
@@ -536,20 +481,20 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #cdc6be;
-    border: 2px solid #8c492f;
+    background: #6a0dad;
+    border: 2px solid #6a0dad;
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
 }
 
 .carousel-dot:hover {
-    background: #a68329;
+    background: #4a037c;
     transform: scale(1.2);
 }
 
 .carousel-dot.active {
-    background: #8c492f;
+    background: #A45DBB;
     transform: scale(1.3);
 }
 
