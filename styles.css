@@ -5,17 +5,17 @@
         }
 
         body {
-            font-family: Georgia;
+            font-family: "Manrope", sans-serif;
             line-height: 1.6;
-            color: #272622;
-            background-color: #e7e2d8;
+            color: #1f1a3d;
+            background-color: #f3dcf0;
         }
 
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #cdc6be;
+            background: #eab8e4;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
         }
@@ -27,28 +27,28 @@
             padding: 1rem;
         }
 
-        nav a {
+        nav ul a {
             margin: 0 1.5rem;
             text-decoration: none;
-            color: #272622;
+            color: #1f1a3d;
             font-weight: 500;
             transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #8c492f;
         }
 
         nav li:not(:last-child)::after {
         content: '◆';
         margin: 0 1.2rem;
-        color: #212017;
+        color: #1f1a3d;
         font-size: 0.7rem;
         }
 
         section#introduction {
             padding: 0;
             max-width: 2000px;
+        }
+
+        section#introduction p{
+            font-size: 2rem;
         }
 
         section {
@@ -63,7 +63,7 @@
         display: block;
         width: 50%;
         height: 5px;
-        background: #8c492f;
+        background: #5f4fac;
         margin: 3rem auto 0;
         margin-top: 16%;
         }
@@ -74,19 +74,22 @@
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            font-family:"Space Grotesk", sans-serif;
+            margin-top: 4rem;
+
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 2rem;
-            color: #8c492f;
+            color: #5f4fac;
+            font-family:"Space Grotesk", sans-serif;
         }
 
         h2 i {
         margin-right: 0.75rem;
-        color: #8c492f;
+        color: #5f4fac;
         }
 
         .hero::before {
@@ -117,14 +120,14 @@
 
         .hero p {
             font-size: 1.3rem;
-            color: #e7e2d8;
+            color: #A45DBB;
             margin-bottom: 2rem;
             z-index: 2;
             opacity: 0.75;
         }
 
         .hero h1{
-            color: #e7e2d8;
+            color: #EAB8E4;
             z-index: 2;
         }
         
@@ -163,7 +166,7 @@
         .about-image img {
             width: 100%;
             border-radius: 500px;
-            border: 10px solid #8c492f;
+            border: 10px solid #5f4fac;
             object-fit: cover;
             display: block; 
         }
@@ -186,38 +189,42 @@
         }
 
         .btn-resume.primary {
-        background-color: #ac8d41;
+        background-color: #6a0dad;
         color: #e5e7eb;
         }
 
         .btn-resume.primary:hover {
-        background-color: #a68329;
+        background-color: #4a037c;
         transform: translateY(-2px);
         }
 
         .btn-resume.secondary {
-        background-color: #ac8d41;
+        background-color: #6a0dad;
         color: #e7e2d8;
         }
 
         .btn-resume.secondary:hover {
-        background-color: #a68329;
+        background-color: #4a037c;
         transform: translateY(-2px);
         }
 
         .cta-btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background: #ac8d41;
+            background: #6a0dad;
             color: #e7e2d8;
             text-decoration: none;
             border-radius: 5px;
             transition: transform 0.3s;
+            font-family:"Space Grotesk", sans-serif;
+            font-weight: 300;
+            font-size: 1.15rem;
         }
 
         .cta-btn:hover {
-            background: #a68329;
+            background: #4a037c;
             transform: translateY(-5px);
+            font-weight: 700;
         }
 
         .skills-grid {
@@ -229,7 +236,13 @@
 
         .skill-card {
             padding: 2rem;
-            background: #b7aa97;
+            background: radial-gradient(circle at top right,
+                            #5f4fac,
+                            transparent 40%),
+                        radial-gradient(circle at bottom left,
+                            #5f4fac,
+                            transparent 35%),
+                        #8476ca;;
             border-top-left-radius: 45px;
             border-bottom-right-radius: 45px;            
             transition: transform 0.3s;
@@ -241,12 +254,12 @@
 
         .skill-card h3 {
             margin-bottom: 1rem;
-            color: #212017;
+            color: #4a037c;
         }
 
         .skill-list {
             list-style: none;
-            color: #272622;
+            color: #1f1a3d;
         }
 
         .skill-list li {
@@ -378,7 +391,7 @@
 
         .contact-item i {
             margin-right: 0.5rem;
-            color: #212017;
+            color: #1f1a3d;
             font-size: 1.2em;
         }
 
@@ -834,7 +847,7 @@
         flex-direction: column;
         gap: 2.5rem;
         margin-top: 3rem;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
     }
 
     .contact-item i {
@@ -843,26 +856,6 @@
 
     .contact-item strong {
         font-size: 1rem;
-    }
-
-    .contact-form {
-        padding: 20px;
-        margin: 1.5rem auto;
-    }
-
-    .form-group label {
-        font-size: 0.95rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.65rem;
-        font-size: 0.95rem;
-    }
-
-    .submit-btn {
-        padding: 0.85rem;
-        font-size: 1.1rem;
     }
 
     /* Footer */

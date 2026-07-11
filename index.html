@@ -6,6 +6,9 @@
     <title>Colonia - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
@@ -21,27 +24,30 @@
     </nav>
 
     <section id="introduction" class="hero">
-        <h1>Welcome! I'm <strong>Donnah Therisse L. Colonia</strong></h1>
-        <p>Computer Science Student | Aspiring UI/UX Designer & Frontend Developer</p>
+        <h1>Welcome! I'm <strong>Donnah Therisse Colonia</strong></h1>
+        <p>
+            <span id="typing"></span>
+        </p>        
         <a href="#contact" class="cta-btn">Get In Touch</a>
     </section>
 
-    <section id="about">
-        <h2><i class="fas fa-user"></i> About Me</h2>
+    <section class="animate-section" id="about">
+        <h2><i class="fas fa-user"></i><span class="typing" data-text="About Me"></span></h2>
         <div class="about-wrapper">
         <div class="about-image">
         <img src="images/profile.png" alt="Profile photo">
         </div>
         <div class="about-content">
-        <p>I'm a Computer Science student from <strong>Taguig City University</strong> seeking an OJT/Internship, with a strong interest in UI design and front-end development. I enjoy creating clean, user-friendly interfaces that balance visual design with functionality.</p>
-        <p style="margin-top: 1rem;">Through my projects, I've worked on designing and building responsive web interfaces, improving user experience, and turning ideas into visually appealing layouts. I'm eager to grow as a designer-developer and contribute to real-world projects.</p>
-        <div class="resume-actions">
-        <a href="resume/colonia_cv_resume.pdf"
+    <p>I'm a Bachelor of Science in Computer Science graduate from <strong>Taguig City University</strong> seeking an entry-level opportunity where I can apply my technical knowledge and continue growing as a developer. I have a strong interest in UI design and front-end development, with a passion for creating clean, responsive, and user-friendly digital experiences.</p>
+    <p style="margin-top: 1rem;">Throughout my college years, I worked on various academic and personal projects involving web development, UI/UX design, database management, and software development. These experiences strengthened my problem-solving skills, attention to detail, and ability to turn ideas into functional and visually appealing applications. I'm excited to contribute to real-world projects while continuously learning and improving my skills.</p>
+
+    <div class="resume-actions">
+        <a href="resume/Colonia_CV.pdf"
             target="_blank"
             class="btn-resume primary">
             View Resume
         </a>
-        <a href="resume/colonia_cv_resume.pdf"
+        <a href="resume/Colonia_CV.pdf"
             download
             class="btn-resume secondary">
             Download Resume
@@ -51,41 +57,81 @@
         </div>
     </section>
 
-    <section id="skills">
-        <h2><i class="fas fa-code"></i> Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Programming Languages (Basic) </h3>
-                <ul class="skill-list">
-                    <li>Java</li>
-                    <li>GDScript</li>
-                    <li>PHP</li>
-                    <li>Python</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Web Development</h3>
-                <ul class="skill-list">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Tools & Technologies</h3>
-                <ul class="skill-list">
-                    <li>GitHub</li>
-                    <li>Visual Studio Code</li>
-                    <li>Figma</li>
-                    <li>Canva</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<section class="animate-section" id="skills">
+    <h2><i class="fas fa-code"></i><span class="typing" data-text="Skills"></span></h2>
 
-    <section id="projects">
-        <h2><i class="fas fa-folder-open"></i> Projects</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>Core Compentencies</h3>
+            <ul class="skill-list">
+                <li>Web Development</li>
+                <li>UI/UX Design</li>
+                <li>Software Development</li>
+
+            </ul>
+        </div>
+
+        <div class="skill-card">
+            <h3>Tools & Technologies</h3>
+            <ul class="skill-list">
+                <li>Visual Studio Code</li>
+                <li>GitHub</li>
+                <li>Figma</li>
+                <li>Canva</li>
+            </ul>
+        </div>
+
+        <div class="skill-card">
+            <h3>Professional Skills</h3>
+            <ul class="skill-list">
+                <li>Problem Solving</li>
+                <li>Attention to Detail</li>
+                <li>Technical Documentation</li>
+                <li>Team Collaboration</li>
+                <li>Adaptability</li>
+            </ul>
+        </div>
+    </div>
+
+        <div class="skills-grid">
+
+        <div class="skill-card">
+            <h3>Programming Languages</h3>
+            <ul class="skill-list">
+                <li>Java</li>
+                <li>PHP</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>GDScript</li>
+            </ul>
+        </div>
+
+        <div class="skill-card">
+            <h3>Web Development</h3>
+            <ul class="skill-list">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>Basic UI/UX Principles</li>
+                <li>Front-End Development</li>
+                <li>Responsive Web Design</li>
+            </ul>
+        </div>
+
+        <div class="skill-card">
+            <h3>Development & Design</h3>
+            <ul class="skill-list">
+                <li>UI Design</li>
+                <li>Wireframing & Prototyping</li>
+                <li>Website Development</li>
+                <li>Game Development (Godot)</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+    <section class="animate-section" id="projects">
+        <h2><i class="fas fa-folder-open"></i><span class="typing" data-text="Projects"></span></h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-img">
@@ -214,8 +260,8 @@
         </div>
     </section>
 
-    <section id="contact">
-        <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+    <section class="animate-section" id="contact">
+        <h2><i class="fas fa-envelope"></i><span class="typing" data-text="Contact"></span></h2>
         <div class="contact-info">
         <div class="contact-item">
             <i class="fab fa-github"></i>
@@ -230,39 +276,17 @@
         <div class="contact-item">
             <i class="fab fa-linkedin"></i>
             <strong>LinkedIn</strong>
-            <a href="https://www.linkedin.com/in/donnah-colonia-ab8a64334/" target="_blank" title="Link to LinkedIn account">Donnah Colonia</a>
+            <a href="https://www.linkedin.com/in/donnah-therisse-colonia/" target="_blank" title="Link to LinkedIn account">Donnah Colonia</a>
         </div>
-        </div>
-        <form class="contact-form" id="contactForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="from_name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="reply_to" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-            <div id="formStatus"></div>
-        </form>
-
     </section>
 
     <footer>
-        <p>&copy; 2025 E-Portfolio. All rights reserved.</p>
+        <p>&copy; 2026 E-Portfolio. All rights reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-    (function() {
-        emailjs.init("rGE8Y48VVhPgOf0ga");
-    })();
-    </script>
 
 </body>
 </html>

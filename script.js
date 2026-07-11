@@ -1,3 +1,43 @@
+var typed = new Typed("#typing", {
+    strings: [
+        "Computer Science Graduate",
+        "Aspiring Front-End Developer",
+        "UI/UX Design Enthusiast",
+        "Open to Entry-Level Opportunities"
+    ],
+    typeSpeed: 60,
+    backSpeed: 35,
+    backDelay: 1800,
+    loop: true,
+    showCursor: true,
+    cursorChar: "|"
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        const typing = entry.target.querySelector(".typing");
+
+        typing.textContent = "";
+
+        new Typed(typing, {
+            strings: [typing.dataset.text],
+            typeSpeed: 150,
+            showCursor: false,
+            loop: false
+        });
+
+    });
+}, {
+    threshold: 0.5
+});
+
+document.querySelectorAll(".animate-section").forEach(section => {
+    observer.observe(section);
+});
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -25,26 +65,10 @@ window.addEventListener('scroll', function() {
     });
 
     navLinks.forEach(link => {
-        link.style.color = '#272622';
+        link.style.color = '#1f1a3d';
         if (link.getAttribute('href') === '#' + current) {
-            link.style.color = '#8c492f';
+            link.style.color = '#6a0dad';
         }
-    });
-});
-
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm(
-        "service_as1d2v7",
-        "template_eehbtkt",
-        this
-    ).then(() => {
-        alert("Message sent successfully!");
-        this.reset();
-    }, (error) => {
-        alert("Failed to send message. Please try again.");
-        console.error(error);
     });
 });
 
