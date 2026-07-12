@@ -4,6 +4,10 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: "Manrope", sans-serif;
             line-height: 1.6;
@@ -88,7 +92,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background-color: rgba(0, 0, 0, 0.75); 
             z-index: 1;
         }
@@ -218,6 +222,69 @@
             background: #4a037c;
             transform: translateY(-5px);
             font-weight: 700;
+        }
+
+        .text1 {
+            margin-left: 20px;
+            margin-bottom: 5px;
+            color:#6a0dad;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .text2{
+            margin-left: 20px;
+            font-weight: 600;
+        }
+
+        .text3 {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .list1 {
+            margin-left: 60px;
+        }
+
+        #experience.wipe-section {
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+
+        #experience .wipe-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .wipe-section {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background: #f3dcf0; 
+            min-height: 80vh;
+            padding-top: 5%;
+            margin-top: 7%;
+            width: 100%;
+        }
+
+        /* This is the new background */
+        .wipe-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #A45DBB 0%, #ca8dde 50%, #EAB8E4 100%);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.8s ease;
+            z-index: -1;
+        }
+
+        .wipe-section.wipe-active::before {
+            transform: scaleX(1);
         }
 
         .skills-grid {

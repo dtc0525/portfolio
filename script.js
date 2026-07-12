@@ -16,22 +16,41 @@ var typed = new Typed("#typing", {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
 
-        if (!entry.isIntersecting) return;
+        if (entry.isIntersecting) {
 
-        const typing = entry.target.querySelector(".typing");
+            // Background wipe
+            entry.target.classList.add("wipe-active");
 
-        typing.textContent = "";
+            // Typing animation
+            const typing = entry.target.querySelector(".typing");
 
-        new Typed(typing, {
-            strings: [typing.dataset.text],
-            typeSpeed: 150,
-            showCursor: false,
-            loop: false
-        });
+            if (typing) {
+
+                if (typing._typed) {
+                    typing._typed.destroy();
+                }
+
+                typing.textContent = "";
+
+                typing._typed = new Typed(typing, {
+                    strings: [typing.dataset.text],
+                    typeSpeed: 150,
+                    showCursor: false,
+                    loop: false
+                });
+            }
+
+        } else {
+
+            // Reset background when leaving viewport
+            entry.target.classList.remove("wipe-active");
+
+        }
 
     });
+
 }, {
-    threshold: 0.5
+    threshold: 0.4
 });
 
 document.querySelectorAll(".animate-section").forEach(section => {
@@ -71,6 +90,8 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+
 
 class ProjectsCarousel {
     constructor() {
